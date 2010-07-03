@@ -11,6 +11,7 @@ begin
     gem.homepage = "http://github.com/cloudhead/toto"
     gem.authors = ["cloudhead"]
     gem.add_development_dependency "riot"
+    gem.add_development_dependency "hpricot"
     gem.add_dependency "builder"
     gem.add_dependency "rack"
     if RUBY_PLATFORM =~ /win32/

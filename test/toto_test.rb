@@ -192,6 +192,17 @@ context Toto do
       end
     end
 
+    context "with a custom markdown function that reverses the body" do
+      setup do
+        Toto::Article.new({
+          :title => "Toto & The Wizard of Oz.",
+          :body => "Hello stranger!"
+        }, @config.merge(:markdown => lambda { |text| text.reverse }))
+      end
+
+      should("passes the body through the function") { topic.body }.equals "!regnarts olleH"
+    end
+
     context "in a subdirectory" do
       context "with implicit leading forward slash" do
         setup do
@@ -271,5 +282,3 @@ context Toto do
     should("respond to iso8601") { Date.today }.respond_to?(:iso8601)
   end
 end
-
-

@@ -40,10 +40,13 @@ module Toto
     end
 
     def markdown text
-      if (options = @config[:markdown])
-        Markdown.new(text.to_s.strip, *(options.eql?(true) ? [] : options)).to_html
+      case options = @config[:markdown]
+      when nil, false
+        text.to_s.strip
+      when Proc
+        options.call(text.to_s.strip)
       else
-        text.strip
+        Markdown.new(text.to_s.strip, *(options.eql?(true) ? [] : options)).to_html
       end
     end
 
@@ -354,4 +357,3 @@ module Toto
     end
   end
 end
-

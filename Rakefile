@@ -14,11 +14,6 @@ begin
     gem.add_development_dependency "hpricot"
     gem.add_dependency "builder"
     gem.add_dependency "rack"
-    if RUBY_PLATFORM =~ /win32/
-      gem.add_dependency "maruku"
-    else
-      gem.add_dependency "rdiscount"
-    end
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
